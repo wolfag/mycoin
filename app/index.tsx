@@ -1,29 +1,35 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Home = () => {
-  const { data } = useQuery({
-    queryKey: ['test'],
-    queryFn: async () => {
-      const res = await fetch('/api/currencies');
-      const json = await res.json();
-      return json;
-    },
-  });
-  console.log({ data });
+const DemoRoute = () => {
+  const handleClearDB = () => {};
+
+  const handleInsertDB = () => {};
+
+  const handleShowCrypto = () => {};
+
+  const handleShowFiat = () => {};
+
+  const handleShowAllCurrencies = () => {};
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Button title='Clear DB' onPress={handleClearDB} />
+      <Button title='Insert DB' onPress={handleInsertDB} />
+      <Button title='Show Crypto' onPress={handleShowCrypto} />
+      <Button title='Show Fiat' onPress={handleShowFiat} />
+      <Button title='Show All Currencies' onPress={handleShowAllCurrencies} />
+    </SafeAreaView>
   );
 };
 
-export default Home;
+export default DemoRoute;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
