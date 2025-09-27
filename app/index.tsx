@@ -1,17 +1,39 @@
+import { CurrencyMode } from '@/features/currency/constants/CurrencyMode';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { Button, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DemoRoute = () => {
+  const router = useRouter();
+
   const handleClearDB = () => {};
 
   const handleInsertDB = () => {};
 
-  const handleShowCrypto = () => {};
+  const handleShowCrypto = () => {
+    router.push({
+      pathname: '/currency-list',
+      params: {
+        mode: CurrencyMode.CRYPTO,
+      },
+    });
+  };
 
-  const handleShowFiat = () => {};
+  const handleShowFiat = () => {
+    router.push({
+      pathname: '/currency-list',
+      params: {
+        mode: CurrencyMode.FIAT,
+      },
+    });
+  };
 
-  const handleShowAllCurrencies = () => {};
+  const handleShowAllCurrencies = () => {
+    router.push({
+      pathname: '/currency-list',
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
