@@ -4,6 +4,14 @@ This is a **React Native / Expo** demo app to manage and explore currencies (cry
 
 ---
 
+## Demo
+
+**iOS**
+
+**Android**
+
+---
+
 ## Features
 
 1. **Currency Store**
