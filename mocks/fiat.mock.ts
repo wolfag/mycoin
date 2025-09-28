@@ -1,6 +1,6 @@
 import { CurrencyInfoType } from '@/features/currency/types/CurrencyInfo';
 
-export const MOCK_CRYPTO_LIST: CurrencyInfoType[] = [
+export const MOCK_FIAT_LIST: CurrencyInfoType[] = [
   {
     id: 'SGD',
     name: 'Singapore Dollar',

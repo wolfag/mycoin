@@ -1,16 +1,25 @@
-import { MOCK_CRYPTO_LIST } from '@/mocks/crypto.mock';
-import { Stack, useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import React, { useMemo } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CurrencyList from '../components/CurrencyList';
 import SearchBar from '../components/SearchBar';
+import { useCurrencyStore } from '../stores/currencyStore';
+import { CurrencyModeType } from '../types/CurrencyMode';
 
 const CurrencyListScreen = () => {
   const insets = useSafeAreaInsets();
-  const [data, setData] = useState(MOCK_CRYPTO_LIST);
+  const { mode } = useLocalSearchParams<{ mode?: CurrencyModeType }>();
+  const { datasets } = useCurrencyStore();
 
   const router = useRouter();
+
+  const dataSource = useMemo(() => {
+    if (mode) {
+      return datasets[mode] || [];
+    }
+    return Object.values(datasets).flat();
+  }, [mode, datasets]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -21,7 +30,7 @@ const CurrencyListScreen = () => {
           ),
         }}
       />
-      <CurrencyList data={data} style={styles.list} />
+      <CurrencyList data={dataSource} style={styles.list} />
     </SafeAreaView>
   );
 };
