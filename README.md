@@ -1,50 +1,102 @@
-# Welcome to your Expo app 👋
+# Currency Demo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a **React Native / Expo** demo app to manage and explore currencies (crypto and fiat). It includes a **local in-memory store**, searchable currency list, database operations, and reusable UI components.  
 
-## Get started
+---
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+1. **Currency Store**
+   - Uses `zustand` for state management.
+   - Supports multiple currency modes: `CRYPTO` and `FIAT`.
+   - Functions:
+     - `insertDataset(mode, data)`: Insert currency data for a mode.
+     - `clearDataset(mode)`: Clear data for a mode.
 
-2. Start the app
+2. **DemoScreen**
+   - Provides buttons to:
+     - Clear database
+     - Insert mock database
+     - Show currencies by type (`CRYPTO` / `FIAT`) or all
+   - Uses `router.push` to navigate to `CurrencyListScreen`.
 
-   ```bash
-   npx expo start
-   ```
+3. **CurrencyListScreen**
+   - Displays a list of currencies.
+   - Supports filtering by `mode` (`CRYPTO`, `FIAT`) or showing all.
+   - Supports search functionality.
+   - Uses `SearchBar` with **debounced input** to avoid unnecessary re-renders.
+   - Uses `useMemo` for `dataSource` and `filteredData` to optimize performance.
 
-In the output, you'll find options to open the app in a
+4. **Components**
+   - **SearchBar**
+     - Handles input, focus state, and debounce internally.
+     - Shows clear/search icons conditionally.
+   - **CurrencyList**
+     - FlatList wrapper.
+     - Supports overriding all props.
+     - Uses `ItemRow` as render item.
+   - **ItemRow**
+     - Displays currency name, symbol, and optional avatar.
+     - Uses `ItemSuffix` for symbol/chevron.
+   - **AvatarWithChar**
+     - Displays first character of currency as avatar.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. **Utilities**
+   - `useDebounce` custom hook for debounced callbacks.
+   - `matchCurrency(item, { query })`: matches item name/code with query.
+   - `getTestId` for test automation.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+6. **Testing**
+   - Unit tests for:
+     - `CurrencyListScreen`
+     - `SearchBar`
+     - `CurrencyList` / `ItemRow` / `ItemSuffix`
+     - `useDebounce`
+   - Mocks required for:
+     - `useCurrencyStore`
+     - `useRouter`
+     - `useLocalSearchParams`
+     - `Stack.Screen` header rendering
 
-## Get a fresh project
+7. **Navigation**
+   - Uses `expo-router`.
+   - Screens:
+     - `/demo` → DemoScreen
+     - `/currency-list` → CurrencyListScreen
 
-When you're ready, run:
+8. **State / Optimization**
+   - Components optimized with:
+     - `React.memo` for `ItemRow`
+     - `useMemo` for filtered lists
+     - `useCallback` for stable functions
+   - Search input is debounced inside `SearchBar` to reduce re-renders.
+   - Store functions are directly selected to avoid unnecessary subscription.
+
+---
+
+## Installation
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## App Flow Diagram
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```mermaid
+flowchart TD
+    A[DemoScreen] -->|Insert DB| B[CurrencyStore.datasets]
+    A -->|Clear DB| B
+    A -->|Show Crypto| C[CurrencyListScreen]
+    A -->|Show Fiat| C
+    A -->|Show All| C
+    C -->|Render List| D[CurrencyList]
+    D -->|Render Item| E[ItemRow]
+    E -->|Avatar| F[AvatarWithChar]
+    E -->|Suffix| G[ItemSuffix]
+    C -->|Search| H[SearchBar]
+    H -->|Debounced query| C
+    B -->|Subscribe datasets| C
+```
