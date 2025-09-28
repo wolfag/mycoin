@@ -19,6 +19,7 @@ const DemoRoute = () => {
     Toast.show({
       type: 'success',
       text2: 'Database cleared successfully',
+      position: 'bottom',
     });
   };
 
@@ -28,6 +29,7 @@ const DemoRoute = () => {
     Toast.show({
       type: 'success',
       text2: 'Database inserted successfully',
+      position: 'bottom',
     });
   };
 
