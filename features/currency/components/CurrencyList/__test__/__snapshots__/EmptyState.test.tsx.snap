@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyState renders UI 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+  testID="EmptyState"
+>
+  <AntDesign
+    color="grey"
+    name="frown"
+    size={60}
+  />
+  <Text
+    style={
+      {
+        "marginTop": 10,
+      }
+    }
+  >
+    No Results
+  </Text>
+  <Text
+    style={
+      {
+        "color": "grey",
+        "marginTop": 5,
+      }
+    }
+  >
+    Try "MCO"
+  </Text>
+</View>
+`;

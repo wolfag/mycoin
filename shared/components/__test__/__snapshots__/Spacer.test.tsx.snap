@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spacer renders default spacer 1`] = `
+<View
+  style={
+    {
+      "flex": 0,
+      "height": 0,
+      "width": 12,
+    }
+  }
+  testID="Spacer"
+/>
+`;
