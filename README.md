@@ -8,7 +8,15 @@ This is a **React Native / Expo** demo app to manage and explore currencies (cry
 
 **iOS**
 
+https://github.com/user-attachments/assets/53853066-ca05-4dfb-b175-8eab59097bb3
+
+
+
 **Android**
+
+https://github.com/user-attachments/assets/7425a6c9-20de-43b8-8a93-e73ac589607e
+
+
 
 ---
 
