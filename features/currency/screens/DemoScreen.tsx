@@ -1,5 +1,5 @@
 import { CurrencyMode } from '@/features/currency/constants/CurrencyMode';
-import { useCurrencyStore } from '@/features/currency/stores/currencyStore';
+
 import { MOCK_CRYPTO_LIST } from '@/mocks/crypto.mock';
 import { MOCK_FIAT_LIST } from '@/mocks/fiat.mock';
 import MyButton from '@/shared/components/MyButton';
@@ -8,11 +8,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
+import { useCurrencyStore } from '../stores/useCurrencyStore';
 
 const DemoScreen = () => {
   const router = useRouter();
 
-  const { insertDataset, clearDataset } = useCurrencyStore();
+  const insertDataset = useCurrencyStore((state) => state.insertDataset);
+  const clearDataset = useCurrencyStore((state) => state.clearDataset);
 
   const handleClearDB = () => {
     clearDataset(CurrencyMode.CRYPTO);

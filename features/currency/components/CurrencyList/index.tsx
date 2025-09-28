@@ -1,5 +1,6 @@
 import Spacer from '@/shared/components/Spacer';
 import { getId } from '@/shared/utils/getId';
+import { getTestId } from '@/shared/utils/getTestId';
 import React, { useCallback } from 'react';
 import { FlatList, FlatListProps, ListRenderItem } from 'react-native';
 import { CurrencyInfoType } from '../../types/CurrencyInfo';
@@ -9,7 +10,7 @@ import ItemRow from './ItemRow';
 type Props = Omit<FlatListProps<CurrencyInfoType>, 'renderItem'> & {
   renderItem?: FlatListProps<CurrencyInfoType>['renderItem'];
 };
-const CurrencyList = (props: Props) => {
+const CurrencyList = ({ renderItem, ...rest }: Props) => {
   const handleRenderItem: ListRenderItem<CurrencyInfoType> = useCallback(
     ({ item }) => <ItemRow data={item} />,
     []
@@ -18,10 +19,11 @@ const CurrencyList = (props: Props) => {
   return (
     <FlatList
       keyExtractor={getId}
-      renderItem={handleRenderItem}
+      renderItem={renderItem ?? handleRenderItem}
       ItemSeparatorComponent={() => <Spacer vertical size={12} />}
       ListEmptyComponent={() => <EmptyState />}
-      {...props} // allow override all props
+      {...getTestId('CurrencyList')}
+      {...rest}
     />
   );
 };

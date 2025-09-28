@@ -1,11 +1,12 @@
-import useDebounce from '@/shared/hooks/useDebounce';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import CurrencyList from '../components/CurrencyList';
 import SearchBar from '../components/SearchBar';
-import { useCurrencyStore } from '../stores/currencyStore';
+
+import { useCurrencyStore } from '../stores/useCurrencyStore';
 import { CurrencyModeType } from '../types/CurrencyMode';
 import { matchCurrency } from '../utils/matchCurrency';
 
@@ -14,13 +15,9 @@ const CurrencyListScreen = () => {
   const insets = useSafeAreaInsets();
 
   const { mode } = useLocalSearchParams<{ mode?: CurrencyModeType }>();
-  const { datasets } = useCurrencyStore();
+  const datasets = useCurrencyStore((state) => state.datasets);
 
   const [query, setQuery] = useState('');
-  const handleClearQuery = () => {
-    setQuery('');
-  };
-  const queryDebounced = useDebounce(query);
 
   const title = (mode || 'All').toUpperCase();
 
@@ -32,14 +29,12 @@ const CurrencyListScreen = () => {
   }, [mode, datasets]);
 
   const filteredData = useMemo(() => {
-    if (!queryDebounced) {
+    if (!query) {
       return dataSource;
     }
 
-    return dataSource.filter((item) =>
-      matchCurrency(item, { query: queryDebounced })
-    );
-  }, [queryDebounced, dataSource]);
+    return dataSource.filter((item) => matchCurrency(item, { query }));
+  }, [query, dataSource]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -51,7 +46,6 @@ const CurrencyListScreen = () => {
               onBack={router.back}
               query={query}
               setQuery={setQuery}
-              onClear={handleClearQuery}
               title={title}
             />
           ),

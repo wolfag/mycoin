@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { getTestId } from '../utils/getTestId';
 
 type Props = {
   size?: number;
@@ -14,6 +15,7 @@ const Spacer = ({ size = 12, vertical, full }: Props) => {
         height: vertical ? size : 0,
         width: vertical ? 0 : size,
       }}
+      {...getTestId('Spacer')}
     />
   );
 };
