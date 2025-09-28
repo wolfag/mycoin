@@ -59,6 +59,7 @@ const SearchBar = ({
           style={{
             flex: 1,
             opacity: canShowFocus ? 1 : 0,
+            padding: 5,
           }}
           onFocus={onFocus}
           onBlur={onBlur}
