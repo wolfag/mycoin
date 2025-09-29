@@ -60,6 +60,9 @@ https://github.com/user-attachments/assets/7425a6c9-20de-43b8-8a93-e73ac589607e
 5. **Utilities**
    - `useDebounce` custom hook for debounced callbacks.
    - `matchCurrency(item, { query })`: matches item name/code with query.
+      - The coin’s name (e.g. Bitcoin) starts with the search term
+      - The coin’s name contains a partial match with a ‘ ’ (space) prefixed to the search term
+      - The coin’s symbol starts with the search term
    - `getTestId` for test automation.
 
 6. **Testing**
