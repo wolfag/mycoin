@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for features/currency/stores/useCurrencyStore.ts</title>
+    <title>Code coverage report for utils/matchCurrency.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">features/currency/stores</a> useCurrencyStore.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">utils</a> matchCurrency.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">10% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>1/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">10% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,21 +87,7 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,44 +95,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'zustand';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CurrencyInfoType } from '../types/CurrencyInfo';
 &nbsp;
-import { CurrencyMode } from '../constants/CurrencyMode';
-import { CurrencyInfoType } from '../types/CurrencyInfo';
-import { CurrencyModeType } from '../types/CurrencyMode';
+export const matchCurrency = <span class="fstat-no" title="function not covered" >(</span>
+  item: CurrencyInfoType,
+  options: {
+    query: string;
+  }
+): boolean =&gt; {
+  const { query } = <span class="cstat-no" title="statement not covered" >options;</span>
+  const normalizeQuery = <span class="cstat-no" title="statement not covered" >query.toLocaleLowerCase();</span>
 &nbsp;
-type CurrencyStore = {
-  datasets: Record&lt;CurrencyModeType, CurrencyInfoType[]&gt;;
-  insertDataset: (key: CurrencyModeType, data: CurrencyInfoType[]) =&gt; void;
-  clearDataset: (key: CurrencyModeType) =&gt; void;
+<span class="cstat-no" title="statement not covered" >  if (item.name.toLocaleLowerCase().startsWith(normalizeQuery)) {</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (item.name.toLocaleLowerCase().indexOf(` ${normalizeQuery}`) &gt;= 0) {</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (item.symbol?.toLocaleLowerCase().startsWith(normalizeQuery)) {</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return false;</span>
 };
-&nbsp;
-export const useCurrencyStore = create&lt;CurrencyStore&gt;((set) =&gt; ({
-  datasets: {
-    [CurrencyMode.CRYPTO]: [],
-    [CurrencyMode.FIAT]: [],
-  },
-  insertDataset: (key, data) =&gt; {
-    set((state) =&gt; ({
-      datasets: { ...state.datasets, [key]: data },
-    }));
-  },
-  clearDataset: (key) =&gt; {
-    set((state) =&gt; ({
-      datasets: { ...state.datasets, [key]: [] },
-    }));
-  },
-}));
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -154,16 +142,16 @@ export const useCurrencyStore = create&lt;CurrencyStore&gt;((set) =&gt; ({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-05T16:10:15.939Z
+                at 2025-10-05T16:10:04.969Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

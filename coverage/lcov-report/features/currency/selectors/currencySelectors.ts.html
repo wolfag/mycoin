@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for features/currency/stores/useCurrencyStore.ts</title>
+    <title>Code coverage report for features/currency/selectors/currencySelectors.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">features/currency/stores</a> useCurrencyStore.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">features/currency/selectors</a> currencySelectors.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -91,7 +91,28 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -100,53 +121,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'zustand';
-&nbsp;
-import { CurrencyMode } from '../constants/CurrencyMode';
-import { CurrencyInfoType } from '../types/CurrencyInfo';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CurrencyInfoType } from '../types/CurrencyInfo';
 import { CurrencyModeType } from '../types/CurrencyMode';
+import { matchCurrency } from '../utils/matchCurrency';
 &nbsp;
-type CurrencyStore = {
-  datasets: Record&lt;CurrencyModeType, CurrencyInfoType[]&gt;;
-  insertDataset: (key: CurrencyModeType, data: CurrencyInfoType[]) =&gt; void;
-  clearDataset: (key: CurrencyModeType) =&gt; void;
+export const selectDataSource = ({
+  datasets,
+  mode,
+}: {
+  datasets: Record&lt;string, CurrencyInfoType[]&gt;;
+  mode?: CurrencyModeType;
+}) =&gt; {
+  if (mode) {
+    return datasets[mode] || [];
+  }
+  return Object.values(datasets).flat();
 };
 &nbsp;
-export const useCurrencyStore = create&lt;CurrencyStore&gt;((set) =&gt; ({
-  datasets: {
-    [CurrencyMode.CRYPTO]: [],
-    [CurrencyMode.FIAT]: [],
-  },
-  insertDataset: (key, data) =&gt; {
-    set((state) =&gt; ({
-      datasets: { ...state.datasets, [key]: data },
-    }));
-  },
-  clearDataset: (key) =&gt; {
-    set((state) =&gt; ({
-      datasets: { ...state.datasets, [key]: [] },
-    }));
-  },
-}));
+export const selectFilteredCurrencies = ({
+  datasets,
+  mode,
+  query,
+}: {
+  datasets: Record&lt;string, CurrencyInfoType[]&gt;;
+  mode?: CurrencyModeType;
+  query?: string;
+}) =&gt; {
+  const data = selectDataSource({ datasets, mode });
+  if (!query) {
+    return data;
+  }
+  return data.filter((item) =&gt; matchCurrency(item, { query }));
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
