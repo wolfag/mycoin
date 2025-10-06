@@ -41,8 +41,8 @@ jest.mock('expo-router', () => ({
   useRouter: jest.fn(),
   useLocalSearchParams: jest.fn(),
   Stack: {
-    Screen: ({ children }: { children: any }) => {
-      return children;
+    Screen: ({ options }: { options: any }) => {
+      return options.header?.() ?? null;
     },
   },
 }));
@@ -70,8 +70,9 @@ describe('CurrencyListScreen', () => {
   });
 
   it('renders all datasets when mode is undefined', async () => {
-    const { queryByTestId } = render(<CurrencyListScreen />);
+    const { queryByTestId, getByTestId } = render(<CurrencyListScreen />);
     await waitFor(() => {
+      expect(queryByTestId('SearchBar.Title')).toHaveTextContent('ALL');
       expect(queryByTestId(`ItemRow.BTC.Container`)).toBeTruthy();
       expect(queryByTestId('ItemRow.$.Container')).toBeTruthy();
     });
@@ -84,6 +85,7 @@ describe('CurrencyListScreen', () => {
 
     const { queryByTestId } = render(<CurrencyListScreen />);
     await waitFor(() => {
+      expect(queryByTestId('SearchBar.Title')).toHaveTextContent('CRYPTO');
       expect(queryByTestId(`ItemRow.BTC.Container`)).toBeTruthy();
       expect(queryByTestId('ItemRow.$.Container')).toBeFalsy();
     });
@@ -96,6 +98,7 @@ describe('CurrencyListScreen', () => {
 
     const { queryByTestId } = render(<CurrencyListScreen />);
     await waitFor(() => {
+      expect(queryByTestId('SearchBar.Title')).toHaveTextContent('FIAT');
       expect(queryByTestId(`ItemRow.BTC.Container`)).toBeFalsy();
       expect(queryByTestId('ItemRow.$.Container')).toBeTruthy();
     });

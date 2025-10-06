@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { selectFilteredCurrencies } from '../selectors/currencySelectors';
 import { useCurrencyStore } from '../stores/useCurrencyStore';
 import { CurrencyModeType } from './../types/CurrencyMode';
+
 export const useCurrencies = ({
   mode,
   query = '',
